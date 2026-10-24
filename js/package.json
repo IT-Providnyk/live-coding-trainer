@@ -1,0 +1,14 @@
+{
+  "name": "live-coding-js",
+  "private": true,
+  "type": "module",
+  "description": "Pure JS drills for live coding. No dependencies.",
+  "scripts": {
+    "start": "node run.js",
+    "test": "node run.js",
+    "solutions": "node run.js --solution"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

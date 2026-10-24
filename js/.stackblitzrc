@@ -1,0 +1,4 @@
+{
+  "installDependencies": false,
+  "startCommand": "node run.js 01"
+}
