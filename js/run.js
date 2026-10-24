@@ -24,8 +24,13 @@ if (files.length === 0) {
   process.exit(1);
 }
 
-const { status } = spawnSync(process.execPath, ['--test', ...files], {
+// Only the latest run stays on screen.
+console.clear();
+
+const reporter = join(root, 'reporter.js');
+const { status } = spawnSync(process.execPath, ['--test', `--test-reporter=${reporter}`, '--test-reporter-destination=stdout', ...files], {
   stdio: 'inherit',
-  env: { ...process.env, SOLUTION: solution ? '1' : '' },
+  // Small heap: an endless loop fails in a second instead of eating all memory.
+  env: { ...process.env, SOLUTION: solution ? '1' : '', NODE_OPTIONS: '--max-old-space-size=256' },
 });
 process.exit(status ?? 1);
